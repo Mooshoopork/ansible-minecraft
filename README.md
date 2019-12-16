@@ -1,1 +1,1 @@
-Ansible install of minecraft 1.14.4
+Ansible install of minecraft 1.15.1

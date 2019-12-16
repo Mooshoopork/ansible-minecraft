@@ -5,7 +5,7 @@ ConditionPathExists=!/opt/minecraft/server_not_to_be_run
 
 [Service]
 WorkingDirectory=/opt/minecraft
-ExecStart=/usr/bin/java -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=7 -XX:+AggressiveOpts -Xms1G -Xmx32G -jar /opt/minecraft/1.14.4-server.jar nogui
+ExecStart=/usr/bin/java -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=7 -XX:+AggressiveOpts -Xms1G -Xmx32G -jar /opt/minecraft/1.15.1-server.jar nogui
 User=root
 Type=simple
 Restart=on-failure

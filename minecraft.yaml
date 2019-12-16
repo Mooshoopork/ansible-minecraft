@@ -18,7 +18,7 @@
 
     - name: Copy Minecraft-server file to server
       copy:
-        src: files/1.14.4-server.jar
+        src: files/1.15.1-server.jar
         dest: /opt/minecraft
         owner: root
         group: root
@@ -46,5 +46,5 @@
       
     - name: Enable and start service minecraft
       systemd:
-        state: started
+        state: restarted
         name: minecraft
