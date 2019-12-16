@@ -1,0 +1,50 @@
+---
+# vim:ft=ansible:
+- name: Perform setup for minecraft
+  hosts: minecraft
+  become: true
+  user: root
+
+  tasks:
+    - name: Install Java
+      apt:
+        name: openjdk-8-jre-headless
+        state: present
+
+    - name: Create folder for Minecraft
+      file:
+        path: /opt/minecraft
+        state: directory
+
+    - name: Copy Minecraft-server file to server
+      copy:
+        src: files/1.14.4-server.jar
+        dest: /opt/minecraft
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy Minecraft-server eula file to server
+      copy:
+        src: files/eula.txt
+        dest: /opt/minecraft
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy Minecraft-server systemd file to server
+      copy:
+        src: files/minecraft.service
+        dest: /etc/systemd/system
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: yes
+      
+    - name: Enable and start service minecraft
+      systemd:
+        state: started
+        name: minecraft
