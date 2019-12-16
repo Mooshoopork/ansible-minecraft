@@ -40,6 +40,11 @@
         group: root
         mode: '0755'
 
+    - name: Copy Minecraft-server world to server
+      copy:
+        src: files/world
+        dest: /opt/minecraft/
+
     - name: Reload systemd daemon
       systemd:
         daemon_reload: yes
